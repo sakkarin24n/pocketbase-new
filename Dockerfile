@@ -20,6 +20,8 @@ RUN mkdir -p /app/pb_data
 # กำหนดให้ /app/pb_data เป็น volume (สำหรับเก็บข้อมูลถาวร)
 VOLUME /app/pb_data
 
-# เปิดพอร์ตที่ Render จะส่งผ่านใน environment variable `PORT`
-# และตั้งค่า default เป็น 8090 หาก `PORT` ไม่ได้ถูกกำหนด
-CMD ["./pocketbase", "serve", "--http=0.0.0.0:${PORT:-8090}", "--dir=/app/pb_data"]
+# เปิด port 8090
+EXPOSE 10000
+
+# คำสั่งรัน PocketBase และชี้ให้เก็บข้อมูลใน pb_data
+CMD ["./pocketbase", "serve", "--http=0.0.0.0:10000", "--dir=/app/pb_data"]
