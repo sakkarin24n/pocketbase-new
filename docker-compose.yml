@@ -5,7 +5,7 @@ services:
     build: .
     container_name: pocketbase_container
     ports:
-      - "10000:8090"
+      - "10000:10000"
     volumes:
       - pocketbase_data:/app/pb_data
     restart: always
